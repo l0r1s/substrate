@@ -174,7 +174,7 @@ mod tests {
 	async fn uninitialized_rpc_handler() {
 		let (rpc, _) = setup_io_handler();
 		let request = r#"{"jsonrpc":"2.0","method":"beefy_getFinalizedHead","params":[],"id":1}"#;
-		let expected_response = r#"{"jsonrpc":"2.0","error":{"code":-32000,"message":"RPC call failed: BEEFY RPC endpoint not ready"},"id":1}"#.to_string();
+		let expected_response = r#"{"jsonrpc":"2.0","error":{"code":-32000,"message":"BEEFY RPC endpoint not ready"},"id":1}"#.to_string();
 		let (result, _) = rpc.raw_json_request(&request).await.unwrap();
 
 		assert_eq!(expected_response, result,);
@@ -199,7 +199,7 @@ mod tests {
 		.to_string();
 		let not_ready = "{\
 			\"jsonrpc\":\"2.0\",\
-			\"error\":{\"code\":-32000,\"message\":\"RPC call failed: BEEFY RPC endpoint not ready\"},\
+			\"error\":{\"code\":-32000,\"message\":\"BEEFY RPC endpoint not ready\"},\
 			\"id\":1\
 		}"
 		.to_string();

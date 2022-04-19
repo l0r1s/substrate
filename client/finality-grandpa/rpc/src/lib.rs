@@ -279,7 +279,7 @@ mod tests {
 	#[tokio::test]
 	async fn uninitialized_rpc_handler() {
 		let (rpc, _) = setup_io_handler(EmptyVoterState);
-		let expected_response = r#"{"jsonrpc":"2.0","error":{"code":-32000,"message":"RPC call failed: GRANDPA RPC endpoint not ready"},"id":0}"#.to_string();
+		let expected_response = r#"{"jsonrpc":"2.0","error":{"code":-32000,"message":"GRANDPA RPC endpoint not ready"},"id":0}"#.to_string();
 		let request = r#"{"jsonrpc":"2.0","method":"grandpa_roundState","params":[],"id":0}"#;
 		let (result, _) = rpc.raw_json_request(&request).await.unwrap();
 
